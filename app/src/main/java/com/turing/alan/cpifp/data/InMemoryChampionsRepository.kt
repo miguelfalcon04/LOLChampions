@@ -2,6 +2,17 @@ package com.turing.alan.cpifp.data
 
 class InMemoryChampionsRepository private constructor(): ChampionsRepository {
 
+    companion object {
+        private var instance: InMemoryChampionsRepository? = null
+        fun getInstance(): InMemoryChampionsRepository{
+            if(instance == null){
+                instance = InMemoryChampionsRepository()
+            }
+            return instance!!
+        }
+    }
+    private val _champions = mutableListOf<Champion>()
+
     // Función que devuelve la lista de campeones
     override fun getChampions(): List<Champion> {
         return listOf(
@@ -50,16 +61,8 @@ class InMemoryChampionsRepository private constructor(): ChampionsRepository {
         )
     }
 
-    companion object {
-        // Instancia única del repositorio
-        @Volatile
-        private var instance: ChampionsRepository? = null
-
-        // Método para obtener la instancia de manera segura
-        fun getInstance(): ChampionsRepository {
-            return instance ?: synchronized(this) {
-                instance ?: InMemoryChampionsRepository().also { instance = it }
-            }
-        }
+    override fun readOne(id: Int): Champion {
+        return _champions.single {it.id == id}
     }
+
 }

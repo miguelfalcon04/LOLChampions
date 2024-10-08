@@ -13,7 +13,6 @@ import com.turing.alan.cpifp.databinding.FragmentChampionLoreBinding
 import okhttp3.internal.concurrent.Task
 
 class ChampionLoreFragment : Fragment() {
-
     private  val repository: ChampionsRepository = InMemoryChampionsRepository.getInstance()
     private val args: ChampionLoreFragmentArgs by navArgs()
     private lateinit var binding: FragmentChampionLoreBinding
@@ -30,12 +29,11 @@ class ChampionLoreFragment : Fragment() {
         return binding.root
     }
 
-
-    /*override*/ fun OnCreateView(view: View, savedInstanceState: Bundle?){
-        super.onViewCreated(view,savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val championId = args.championId
+        val champion = repository.readOne(championId)
+        binding.championLore.text = champion.lore
     }
-
-
-
 
 }

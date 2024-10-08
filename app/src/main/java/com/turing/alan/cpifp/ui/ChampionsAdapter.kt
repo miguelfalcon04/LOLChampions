@@ -9,15 +9,19 @@ import coil.load
 import com.turing.alan.cpifp.data.Champion
 import com.turing.alan.cpifp.databinding.ChampionListItemBinding
 
-class ChampionsAdapter: ListAdapter<Champion,ChampionsAdapter.ChampionItemViewHolder>(ChampionDiffCallback) {
+class ChampionsAdapter(private val toItemDetail:((Champion)-> Unit))
+                       : ListAdapter<Champion,ChampionsAdapter.ChampionItemViewHolder>(ChampionDiffCallback) {
 
-    class ChampionItemViewHolder(private val binding:ChampionListItemBinding)
+    inner class ChampionItemViewHolder(private val binding:ChampionListItemBinding)
         : ViewHolder(binding.root) {
 
             fun bind(champion: Champion) {
                 binding.championTitle.text = champion.title
                 binding.championName.text = champion.name
                 binding.championImage.load(champion.imageUrl)
+                binding.root.setOnClickListener{
+                    toItemDetail(champion)
+                }
             }
         }
 
