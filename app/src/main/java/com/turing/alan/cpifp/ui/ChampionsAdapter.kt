@@ -15,15 +15,11 @@ class ChampionsAdapter: ListAdapter<Champion,ChampionsAdapter.ChampionItemViewHo
         : ViewHolder(binding.root) {
 
             fun bind(champion: Champion) {
-                binding.championLore.text = champion.lore
                 binding.championTitle.text = champion.title
                 binding.championName.text = champion.name
                 binding.championImage.load(champion.imageUrl)
-
             }
         }
-
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChampionItemViewHolder {
         val binding = ChampionListItemBinding.inflate(

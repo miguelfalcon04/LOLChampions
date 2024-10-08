@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/lore"
+    app:startDestination="@id/championLoreFragment">
+    <fragment
+        android:id="@+id/championLoreFragment3"
+        android:name="com.turing.alan.cpifp.ui.ChampionLoreFragment"
+        android:label="fragment_champion_lore"
+        tools:layout="@layout/fragment_champion_lore" />
+</navigation>
