@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.navArgs
+import coil.load
 import com.turing.alan.cpifp.R
 import com.turing.alan.cpifp.data.ChampionsRepository
 import com.turing.alan.cpifp.data.InMemoryChampionsRepository
@@ -34,6 +35,9 @@ class ChampionLoreFragment : Fragment() {
         val championId = args.championId
         val champion = repository.readOne(championId)
         binding.championLore.text = champion.lore
+        binding.championName.text = champion.name
+        binding.championTitle.text = champion.title
+        binding.championImage.load(champion.imageUrl)
     }
 
 }

@@ -30,7 +30,6 @@ class ChampionsAdapter(private val toItemDetail:((Champion)-> Unit))
             LayoutInflater.from(parent.context),
             parent,
             false
-
         )
         return ChampionItemViewHolder(binding)
     }
@@ -47,6 +46,5 @@ class ChampionsAdapter(private val toItemDetail:((Champion)-> Unit))
                     oldItem.name == newItem.name &&
                     oldItem.imageUrl == newItem.imageUrl &&
                     oldItem.title == newItem.title
-
     }
 }

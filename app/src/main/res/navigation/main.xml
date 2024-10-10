@@ -2,24 +2,27 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    app:startDestination="@id/championLoreFragment">
+    android:id="@+id/main"
+    app:startDestination="@id/championListFragment">
+
+    <fragment
+        android:id="@+id/championListFragment"
+        android:name="com.turing.alan.cpifp.ui.ChampionListFragment"
+        android:label="ChampionListFragment"
+        tools:layout="@layout/fragment_champion_list">
+        <action
+            android:id="@+id/action_championListFragment_to_championLoreFragment"
+            app:destination="@id/championLoreFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/championLoreFragment"
         android:name="com.turing.alan.cpifp.ui.ChampionLoreFragment"
+        android:label="ChampionLoreFragment"
         tools:layout="@layout/fragment_champion_lore">
-
         <argument
             android:name="championId"
             app:argType="integer" />
-    </fragment>
-    <fragment
-        android:id="@+id/championListFragment"
-        android:name="com.turing.alan.cpifp.ui.ChampionListFragment"
-        android:label="ChampionListFragment" >
-        <action
-            android:id="@+id/action_championListFragment_to_championLoreFragment"
-            app:destination="@id/championLoreFragment" />
     </fragment>
 
 </navigation>

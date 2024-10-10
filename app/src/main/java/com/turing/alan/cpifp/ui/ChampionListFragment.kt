@@ -22,7 +22,6 @@ class ChampionListFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         // return inflater.inflate(R.layout.fragment_champion_list, container, false)
         binding = FragmentChampionListBinding.inflate(
             inflater,
@@ -31,22 +30,18 @@ class ChampionListFragment : Fragment() {
         )
         return binding.root
     }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val adapter = ChampionsAdapter(::toItemDetail)
         val rv = binding.championsList
         rv.adapter = adapter
         (rv.adapter as ChampionsAdapter).submitList(repository.getChampions())
-
     }
-
     override fun onResume() {
         super.onResume()
         val rv = binding.championsList
         (rv.adapter as ChampionsAdapter).submitList(repository.getChampions())
     }
-
     private fun toItemDetail(champion: Champion){
         val action = ChampionListFragmentDirections.actionChampionListFragmentToChampionLoreFragment(champion.id)
         findNavController().navigate(action)
